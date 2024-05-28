@@ -33,68 +33,11 @@
     <button onclick="window.location.href = 'index.html'">Voltar para Cadastro</button>
 </div>
 
-<script src="script.js"></script>
-<script>
-    
-    function displayVehicles() {
-        const vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
-        const vehicleList = document.getElementById('vehicleList');
+<footer>
+    <center><p>Projeto Integrador ADS - Guilherme Paulino da Silva</p></center> 
+    <center><p>2024</p></center>
 
-        vehicleList.innerHTML = '';
-
-        vehicles.forEach(function(vehicle, index) {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td class="checkbox-cell"><input type="checkbox" id="vehicle${index}"></td>
-                <td>${vehicle.manufacturer}</td>
-                <td>${vehicle.model}</td>
-                <td>${vehicle.version}</td>
-                <td>${vehicle.color}</td>
-                <td>${vehicle.manufactureYear}</td>
-                <td>${formatDate(vehicle.registrationDate)}</td> <!-- Alteração aqui -->
-            `;
-            vehicleList.appendChild(row);
-        });
-    }
-
-    
-    displayVehicles();
-
-    
-    function deleteSelected() {
-        const vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
-        const selectedIndexes = [];
-
-        vehicles.forEach(function(vehicle, index) {
-            const checkbox = document.getElementById(`vehicle${index}`);
-            if (checkbox.checked) {
-                selectedIndexes.push(index);
-            }
-        });
-
-        selectedIndexes.reverse().forEach(function(index) {
-            vehicles.splice(index, 1);
-        });
-
-        localStorage.setItem('vehicles', JSON.stringify(vehicles));
-        displayVehicles();
-    }
-
-    
-    function deleteAll() {
-        localStorage.removeItem('vehicles');
-        displayVehicles();
-    }
-
-    
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        const day = String(date.getDate()).padStart(2, '0'); 
-        const month = String(date.getMonth() + 1).padStart(2, '0'); 
-        const year = date.getFullYear(); 
-        return `${day}/${month}/${year}`; 
-    }
-</script>
+<script src="veicad.js"></script>
 
 </body>
 </html>
