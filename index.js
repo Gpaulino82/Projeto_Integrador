@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     const registrationDateInput = document.getElementById('registrationDate');
     const today = new Date();
     const day = String(today.getDate()).padStart(2, '0');
